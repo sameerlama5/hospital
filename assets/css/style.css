@@ -620,12 +620,12 @@ ol {
 .excellence .swiper-button-next {
   position: absolute;
   top: 58%;
-  right: 250px;
+  right: 0;
 }
 .excellence .swiper-button-prev {
   position: absolute;
   top: 58%;
-  left: 250px;
+  left: 0;
 }
 .excellence:hover .swiper-button-next,
 .excellence:hover .swiper-button-prev {
@@ -760,12 +760,12 @@ ol {
 .package .swiper-button-next {
   position: absolute;
   top: 58%;
-  right: 250px;
+  right: 0;
 }
 .package .swiper-button-prev {
   position: absolute;
   top: 58%;
-  left: 250px;
+  left: 0;
 }
 .package:hover .swiper-button-next,
 .package:hover .swiper-button-prev {
@@ -798,12 +798,12 @@ ol {
 .speciality_center .swiper-button-next {
   position: absolute;
   top: 58%;
-  right: 250px;
+  right: 0;
 }
 .speciality_center .swiper-button-prev {
   position: absolute;
   top: 58%;
-  left: 250px;
+  left: 0;
 }
 .speciality_center:hover .swiper-button-next,
 .speciality_center:hover .swiper-button-prev {
