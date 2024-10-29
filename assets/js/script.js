@@ -77,8 +77,8 @@ jQuery(document).ready(function ($) {
   });
 // condolence slider
 const packageSwiper = new Swiper(".package_swiper", {
-  slidesPerView: 4,
-  spaceBetween: 30,
+  slidesPerView: 3,
+  spaceBetween: 24,
   loop: true,
   speed: 800,
   // autoplay: {
@@ -92,7 +92,7 @@ const packageSwiper = new Swiper(".package_swiper", {
 });
 const center = new Swiper(".speciality_center_swiper", {
   slidesPerView: 1.5,
-  spaceBetween: 30,
+  spaceBetween: 24,
   centeredSlides: true,
   loop: true,
   speed: 800,

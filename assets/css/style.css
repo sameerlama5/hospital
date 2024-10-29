@@ -580,6 +580,9 @@ ol {
 .excellence-card:hover::after {
   opacity: 1;
 }
+.exccellence-swiper {
+  padding: 15px 0;
+}
 .exccellence-swiper .swiper-slide {
   height: auto;
 }
@@ -738,7 +741,7 @@ ol {
 /* patients css end */
 /* Recommended packages css start */
 .package_swiper {
-  padding: 0 15px 15px 15px;
+  padding: 15px 0;
 }
 .package_swiper .swiper-slide {
   height: auto;
