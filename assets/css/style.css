@@ -580,6 +580,12 @@ ol {
 .excellence-card:hover::after {
   opacity: 1;
 }
+.exccellence-swiper .swiper-slide {
+  height: auto;
+}
+.excellence-card {
+  height: 100%;
+}
 .exccellence-swiper .swiper-slide-active .excellence-card::before,
 .exccellence-swiper .swiper-slide-active .excellence-card::after {
   opacity: 1;
@@ -676,6 +682,15 @@ ol {
   width: 100%;
   object-fit: cover;
   object-position: center center;
+}
+.patient_swiper .swiper-button-prev {
+  top: 50px;
+  right: 80px;
+  left: inherit;
+}
+.patient_swiper .swiper-button-next {
+  top: 50px;
+  right: 30px;
 }
 .patient_swiper:hover .swiper-button-next,
 .patient_swiper:hover .swiper-button-prev {
