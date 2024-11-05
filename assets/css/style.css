@@ -142,9 +142,24 @@ ol {
   background-color: var(--secondary-hover-color);
   border-color: var(--secondary-hover-color);
 }
-
+.custom-tooltip {
+  --bs-tooltip-bg: var(--secondary-color);
+  --bs-tooltip-color: var(--white-color);
+}
 .block {
   padding: 80px 0;
+}
+.center-read {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.center-read span {
+  transform: rotate(45deg);
+  transition: var(--transition);
+}
+.card:hover .center-read span {
+  transform: rotate(0);
 }
 .card {
   box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.1);
@@ -246,7 +261,6 @@ ol {
   color: var(--secondary-color);
 }
 
-
 /* header css start */
 .main-header.sticky {
   background-color: var(--white-color);
@@ -278,15 +292,57 @@ ol {
 .main-header {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
   transition: var(--transition);
+  background-color: var(--white-color);
 }
 .site-logo a img {
   height: auto;
   width: 70px;
 }
 .primary-menu ul li a {
+  display: block;
+  padding: 35px 0;
   color: var(--black-color);
   font-size: 14px;
   font-weight: 600;
+}
+.dropbtn {
+  color: var(--black-color);
+  display: block;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.sub-menu {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  background-color: var(--white-color);
+  min-width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  transform: translateY(20px);
+  transition: var(--transition);
+  z-index: 999;
+}
+.dropdown .sub-menu li:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dropdown .sub-menu li a {
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .sub-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }
 .modal-backdrop {
   z-index: 0;
@@ -539,7 +595,7 @@ ol {
 
 /* centers of excellence css start */
 .excellence {
-  background-color: rgba(6, 105, 58, .1);
+  background-color: rgba(6, 105, 58, 0.1);
 }
 .excellence-card {
   background-color: var(--white-color);
@@ -617,13 +673,28 @@ ol {
   z-index: 5;
 }
 .excellence-title a {
+  position: relative;
+  padding-bottom: 10px;
   color: var(--black-color);
+}
+.excellence-title a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 70px;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: var(--transition);
 }
 .excellence-title a:hover {
   color: var(--primary-color);
 }
 
 .excellence-card p {
+  margin-top: 15px;
   margin-bottom: 30px;
 }
 .excellence .swiper-button-next {
@@ -679,7 +750,7 @@ ol {
   width: 100%;
   height: 100%;
   background-color: var(--black-color);
-  opacity: .5;
+  opacity: 0.5;
 }
 .patient_swiper .swiper-slide img {
   width: 100%;
@@ -703,7 +774,7 @@ ol {
   border-radius: 10px;
 }
 .patient_thumb_swiper .swiper-slide {
-  height: auto;
+  height: 150px;
   border-radius: 10px;
   position: relative;
   cursor: pointer;
@@ -711,11 +782,8 @@ ol {
 .patient_thumb_swiper .patient-content {
   color: var(--white-color);
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 90%;
+  bottom: 20px;
+  left: 20px;
 }
 .patient_thumb_swiper .swiper-slide::before {
   content: "";
@@ -724,7 +792,7 @@ ol {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--black-color);
+  background: linear-gradient(to top, black, transparent);
   opacity: 0.6;
   border-radius: 10px;
 }
@@ -736,7 +804,7 @@ ol {
   object-position: center center;
 }
 .patient_thumb_swiper .swiper-slide-thumb-active::before {
-  opacity: 0.9;
+  opacity: 1;
 }
 /* patients css end */
 /* Recommended packages css start */
@@ -747,8 +815,29 @@ ol {
   height: auto;
 }
 .package-card {
+  padding: 30px;
   height: 100%;
 }
+.package-card .card-body {
+  padding: 30px 0 0 0;
+}
+.package-card .discount-rate {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-size: 12px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  font-weight: 600;
+}
+
 .price-box {
   margin-bottom: auto;
 }
@@ -757,7 +846,7 @@ ol {
 }
 .package-card .card-img {
   overflow: hidden;
-  border-radius: 7px 7px 0 0;
+  border-radius: 7px;
 }
 
 .package-card .card-img img {
@@ -795,20 +884,30 @@ ol {
 .speciality_center {
   background: url(../image/dotted-map.png) no-repeat center center;
   background-attachment: fixed;
-  background-color: rgba(46, 49, 146, .2);
-
+  background-color: rgba(46, 49, 146, 0.2);
 }
 .speciality_center_swiper {
-  padding: 15px 30px 15px 30px;
+  padding: 15px 0;
 }
 .speciality_center_card {
   border-radius: 10px;
+  padding: 30px;
+}
+.speciality_center_card .card-body {
+  padding: 0 0 0 30px;
 }
 .speciality_center_card h3 a {
   color: var(--black-color);
 }
+.speciality_center_card .card-img {
+  width: 100%;
+  height: 238.8px;
+}
 .speciality_center_card .card-img img {
-  border-radius: 10px 0 0 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 .center-read:hover {
   color: var(--black-color);
@@ -831,12 +930,16 @@ ol {
 
 /* news css start */
 .news-card {
+  padding: 30px;
   height: 100%;
 }
 .news-card .card-img {
   position: relative;
   overflow: hidden;
-  border-radius: 7px 7px 0 0;
+  border-radius: 7px;
+}
+.news-card .card-body {
+  padding: 30px 0 0 0;
 }
 .news-card .card-img img {
   width: 100%;
@@ -865,7 +968,6 @@ ol {
 }
 /* news css end */
 
-
 /* contact css start */
 .info-widget {
   padding: 0 30px;
@@ -885,7 +987,7 @@ ol {
   top: 0;
   width: 1px;
   background-color: #000;
-  opacity: .1;
+  opacity: 0.1;
 }
 .icon-cell {
   width: 60px;
@@ -973,12 +1075,127 @@ ol {
   filter: brightness(0) invert(1);
 }
 /* department css end */
+
+/* opd appointment css start */
+.opd-appointment .nav-tabs .nav-link {
+  background-color: transparent;
+  border-radius: 7px 7px 0 0;
+  color: var(--black-color);
+  border: none;
+  font-weight: 400;
+}
+.opd-appointment .nav-tabs .nav-link.active {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.speciality-search-header {
+  padding: 30px;
+  background-color: var(--white-color);
+  border-radius: 10px;
+}
+.speciality-search-header label {
+  font-weight: 600;
+  display: block;
+}
+.speciality-search-header select {
+  padding: 10px 0;
+  border: 1px solid var(--secondary-color);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  outline: none;
+  width: 100%;
+}
+.speciality-search-header .form-group {
+  border-radius: 7px;
+  padding: 20px;
+  box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.05);
+}
+.speciality-search-header button i {
+  font-size: 20px;
+}
+.doctor-speciality {
+  border-left: 2px solid var(--primary-color);
+}
+.doctor-card {
+  cursor: pointer;
+}
+.doctor-card .card-img {
+  position: relative;
+  border-radius: 7px 7px 0 0;
+  overflow: hidden;
+}
+.doctor-card .card-img img {
+  transition: var(--transition);
+}
+.doctor-card:hover .card-img img {
+  transform: scale(1.1);
+}
+.doctor-social-media {
+  background-color: var(--white-color);
+  position: absolute;
+  top: 0;
+  left: 30px;
+  transform: translateY(-100%);
+  box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  border-radius: 0 0 30px 30px;
+}
+.doctor-card:hover .doctor-social-media {
+  transform: translateY(0);
+}
+.doctor-social-media a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 35px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-radius: 50%;
+}
+.doctor-social-media a:hover {
+  background-color: var(--primary-hover-color);
+}
+.advance-detail-doctor-icon {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.advance-detail-doctor-icon a {
+  display: block;
+  color: white;
+  width: 100%;
+  border-radius: 0;
+}
+.advance-detail-doctor-icon a:not(:last-child) {
+  border-right: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.search-name {
+  background-color: var(--white-color);
+  padding: 15px 25px;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  margin-top: 30px;
+  box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.1);
+}
+.search-name input {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  outline: none;
+}
+
+/* opd appointment css end */
 /* footer css start */
 .site-footer {
   background-color: var(--black-color);
   color: var(--white-color);
 }
-.footer-logo .footer-logo-img{
+.footer-logo .footer-logo-img {
   display: block;
   background-color: var(--white-color);
   padding: 20px;
@@ -1009,8 +1226,8 @@ ol {
   background-color: var(--white-color);
   color: var(--primary-color);
 }
-.footer-links ul li:not(:last-child){
- padding-bottom: 10px;
+.footer-links ul li:not(:last-child) {
+  padding-bottom: 10px;
 }
 .footer-links ul li a {
   color: var(--white-color);
@@ -1019,11 +1236,11 @@ ol {
   color: var(--primary-color);
 }
 .working-shedule ul li:not(:last-child) {
- padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 .footer-conatact ul li:not(:last-child) {
   padding-bottom: 10px;
- }
+}
 .footer-contact-icon {
   width: 40px;
   height: 40px;

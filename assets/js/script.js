@@ -40,7 +40,7 @@ jQuery(document).ready(function ($) {
     },
   });
 
-// doner slider
+  // doner slider
   const exccellence = new Swiper(".exccellence-swiper", {
     slidesPerView: 4,
     spaceBetween: 30,
@@ -59,7 +59,7 @@ jQuery(document).ready(function ($) {
   // thumb silder
   var swiper = new Swiper(".patient_thumb_swiper", {
     loop: true,
-    spaceBetween: 10,
+    spaceBetween: 24,
     slidesPerView: 4,
     freeMode: true,
     watchSlidesProgress: true,
@@ -75,71 +75,84 @@ jQuery(document).ready(function ($) {
       swiper: swiper,
     },
   });
-// condolence slider
-const packageSwiper = new Swiper(".package_swiper", {
-  slidesPerView: 3,
-  spaceBetween: 24,
-  loop: true,
-  speed: 800,
-  // autoplay: {
-  //   delay: 5000,
-  //   disableOnInteraction: false,
-  // },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
-const center = new Swiper(".speciality_center_swiper", {
-  slidesPerView: 1.5,
-  spaceBetween: 24,
-  centeredSlides: true,
-  loop: true,
-  speed: 800,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
-var swiper = new Swiper(".eventSwiper", {
-  loop: true,
-  slidesPerView: 1,
-  spaceBetween: 30,
-  speed: 800,
-  autoplay: {
-    delay: 2000,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  breakpoints: {
-    320: {
-      slidesPerView: 1,
-      spaceBetween: 30,
+  // condolence slider
+  const packageSwiper = new Swiper(".package_swiper", {
+    slidesPerView: 3,
+    spaceBetween: 24,
+    loop: true,
+    speed: 800,
+    // autoplay: {
+    //   delay: 5000,
+    //   disableOnInteraction: false,
+    // },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
-    575: {
-      slidesPerView: 2,
-      spaceBetween: 30,
+  });
+  const center = new Swiper(".speciality_center_swiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 2,
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
     },
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 30,
+    loop: true,
+    speed: 1500,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
     },
-    991: {
-      slidesPerView: 3,
-      spaceBetween: 30,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
-    1025: {
-      slidesPerView: 4,
-      spaceBetween: 30,
+  });
+  var swiper = new Swiper(".eventSwiper", {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 30,
+    speed: 800,
+    autoplay: {
+      delay: 2000,
     },
-  },
-});
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 30,
+      },
+      575: {
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+      991: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+      1025: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+      },
+    },
+  });
+  const tooltipTriggerList = $('[data-bs-toggle="tooltip"]');
+  tooltipTriggerList.each(function () {
+    new bootstrap.Tooltip(this);
+  });
+
   // //   counter
   // var a = 0;
   // $(window).scroll(function () {
@@ -189,40 +202,4 @@ var swiper = new Swiper(".eventSwiper", {
   //   para.find(".show-btn").show();
   //   para.find(".less-btn").hide();
   // });
-
-
-  //memer tab script
-    // Switch to Address Tab using jQuery
-    $('#nextToAddress').on('click', function() {
-      $('#address-tab').tab('show');
-  });
-
-  // Switch to Contact Tab using jQuery
-  $('#nextToContact').on('click', function() {
-      $('#contact-tab').tab('show');
-  });
-  $('#nextToFamily').on('click', function() {
-    $('#family-tab').tab('show');
-});
-$('#familyFormTemplate').click(function(){
-  $('#familyFormTemplate').toggle();
-  $(this).hide(); 
-});
-$('#addBtn').click(function(){
-  var newForm = $('#familyFormTemplate').clone().removeAttr('id').show();
-  $('#formsContainer').append(newForm); 
-  $('#submitContainer').show().appendTo(newForm);
-  newForm.find('.removeBtn').click(function(){
-      $(this).closest('.familyFormInstance').remove();
-      if ($('.familyFormInstance').length === 0) {
-          $('#submitContainer').hide();
-      }
-  });
-});
-
-$('#removeBtn').click(function(){
-  $('#familyForm').hide();
-  $('#addBtn').show(); 
-});
-
 });
